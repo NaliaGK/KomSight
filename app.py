@@ -4,6 +4,9 @@ import pickle
 import News_retriever
 import sentiment
 import Summary
+import webbrowser
+from threading import Timer
+import WordCloud
 #objective
 app = Flask(__name__)
 
@@ -22,13 +25,16 @@ def predict():
     if request.method == 'POST':
         artikel, judul = News_retriever.getter(request.form['link kompas'])
         sentimen_result = sentiment.sen(artikel)
-        import WordCloud
-        WordCloud.wordcloud(artikel, sentimen_result)
+
+        WordCloud.wordcloud(str(artikel), str(sentimen_result))
         summary = Summary.print_summary(artikel)
     else:
         artikel = 'pls wait a sec and click submit again'    
     return render_template('predict.html', artikel=artikel, judul=judul, sentimen_result=sentimen_result, summary=summary)
 
+def open_browser():
+      webbrowser.open_new("http://127.0.0.1:2000")
 
 if __name__ == "__main__":
-    app.run()
+      Timer(1, open_browser).start()
+      app.run(port=2000)
