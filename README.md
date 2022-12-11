@@ -2,10 +2,11 @@
 Kompas Insights in Sentiment Analysis, WordCloud, and Summary
 ![logo](https://user-images.githubusercontent.com/74234522/206904377-0ff12541-291b-45e9-b38d-47428c70fefc.png)
 
-Universitas Airlangga
-Fakultas Teknologi Maju dan Multidisiplin
-Teknologi Sains Data
+Universitas Airlangga - 
+Fakultas Teknologi Maju dan Multidisiplin - 
+Teknologi Sains Data - 
 NLP SD-A1
+
 Kelompok 10 :
 
 1. Giovanny Alberta Tambahjong	162012133012
