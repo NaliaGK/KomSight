@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>KomSight - Kompas Insight</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link href="{{ url_for('static', filename='img/head-logo.png')}}" rel="icon">
+    <!-- Favicon -->
+    <link href="{{ url_for('static', filename='img/favicon.ico')}}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="51">
+    <!-- Navbar Start -->
+    <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-1 py-lg-0 px-lg-5">
+        <a href="index.html" class="navbar-brand d-block d-lg-none">
+            <h1 class="display-4 text-white text-uppercase m-0">KOMSIGHT</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav ml-auto py-0">
+    
+            </div>
+            <a class="navbar-brand bg-primary px-4 mx-3 d-none d-lg-block">
+                <h1 class="display-4 text-white text-uppercase m-0">KOMSIGHT</h1>
+            </a>
+            <div class="navbar-nav mr-auto py-0">
+
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-5" id="contact">
+        <div class="container py-5">
+            <div class="section-title position-relative text-center" style = "margin-bottom: 0px">
+                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Here's your result :</h6>
+                <h1 class="font-secondary display-4">{{judul}}</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <img src="{{ url_for('static', filename='img/wordcloud.png')}}" class = "wordcloud">
+                    <div class="contact-form">
+                        <div id="success"></div>
+                            <div class="wordcloud">
+                                <h5 >Sentiment Result : </h5> 
+                                {% block content %}
+                                    {% if sentimen_result == 'POSITIF' %}
+                                    <h5 data-toggle="tooltip" data-placement="Bottom" title="Apa ini ?" style="color:rgb(0, 96, 41)"> 
+                                        <span data-toggle="modal" data-target="#Sentiment">{{sentimen_result}}</span>
+                                    </h5>
+                                    {% else %}
+                                    <h5 data-toggle="tooltip" data-placement="Bottom" title="Apa ini ?" style="color:rgb(139, 23, 15)">
+                                        <span data-toggle="modal" data-target="#Sentiment">{{sentimen_result}}</span>
+                                    </h5>
+                                    {% endif %}
+                                {% endblock content %}
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div class="wordcloud">
+                                <h5 >Summary : </h5>
+                                <h5 >{{summary}}</h5>
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div class="wordcloud">
+                                <p><span data-toggle="modal" data-target="#Baca"> >> Baca Artikel Lengkap << </span></p>
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div class="text-center">
+                                <a href="/" class="btn btn-primary font-weight-bold py-3 px-5">Check Other News</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+        <div class="row pt-5">
+            <div class="col-12 mb-4 px-4">
+                <div class="row mb-5 p-4" style="background: rgba(256, 256, 256, .05);">
+                    <div class="col-md-4">
+                        <div class="text-md-center">
+                            <h5 class="text-primary text-uppercase mb-2" style="letter-spacing: 5px;">Our Office</h5>
+                            <p class="mb-4 m-md-0">FTMM UNAIR - Jl. Dr. Ir. H. Soekarno, Mulyorejo, Kec. Mulyorejo, Kota SBY, Jawa Timur</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-md-center">
+                            <h5 class="text-primary text-uppercase mb-2" style="letter-spacing: 5px;">Email Us</h5>
+                            <p class="mb-4 m-md-0">info@komsight.com</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-md-center">
+                            <h5 class="text-primary text-uppercase mb-2" style="letter-spacing: 5px;">Call Us</h5>
+                            <p class="m-0">+62882863926</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white text-center border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .05) !important;">
+        <p class="m-0 text-white">&copy; <a>2022 KomSight</a>. All Rights Reserved.</p>
+    </div>
+    <!-- Footer End -->
+
+        <!-- Modal -->
+
+    <!-- Result -->
+    <div class="modal fade" id="Sentiment" tabindex="-1" role="dialog" aria-labelledby="Sentiment"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="result">Apa itu Analisis Sentimen ?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Analisis sentiment adalah proses menganalisis teks digital untuk menentukan apakah nada emosional pesan tersebut positif atau negatif.                    </p>
+                    <p>Negatif : Sentimen ini berarti berita mengungkapkan keburukan seperti pertengkaran atau tragedi, perampokan, pencurian, kecelakaan, perselingkuhan, perceraian, kenakalan, penggunaan narkoba, bencana alam, dan sebagainya.</p>
+                    <p>Positif : Sentimen ini berarti berita menyajikan informasi perihal perbuatan yang positif dan memuat “kebaikan”, seperti penyelamatan dan pengobatan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+
+            <!-- Modal -->
+
+    <!-- Result -->
+    <div class="modal fade" id="Baca" tabindex="-1" role="dialog" aria-labelledby="Baca"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="result">Artikel Lengkap : {{judul}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>{{artikel}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-outline-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='lib/easing/easing.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/waypoints/waypoints.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/isotope/isotope.pkgd.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/lightbox/js/lightbox.min.js')}}"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{{ url_for('static', filename='mail/jqBootstrapValidation.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='mail/contact.js')}}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{ url_for('static', filename='js/main.js')}}"></script>
+</body>
+
+</html>

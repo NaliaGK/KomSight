@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>KomSight - Kompas Insight</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link href="{{ url_for('static', filename='img/head-logo.png')}}" rel="icon">
+    <!-- Favicon -->
+    <link href="{{ url_for('static', filename='img/favicon.ico')}}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="51">
+    <!-- Navbar Start -->
+    <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-1 py-lg-0 px-lg-5">
+        <a href="index.html" class="navbar-brand d-block d-lg-none">
+            <h1 class="display-4 text-white text-uppercase m-0">KOMSIGHT</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav ml-auto py-0">
+                <a href="#home" class="nav-item nav-link active">Home</a>
+                <a href="#about" class="nav-item nav-link">About</a>
+            </div>
+            <a class="navbar-brand bg-primary px-4 mx-3 d-none d-lg-block">
+                <h1 class="display-4 text-white text-uppercase m-0">KOMSIGHT</h1>
+            </a>
+            <div class="navbar-nav mr-auto py-0">
+                <a href="#team" class="nav-item nav-link">Team</a>
+                <!-- <a href="#faqs" class="nav-item nav-link">FAQs</a>
+                <a href="#testimonial" class="nav-item nav-link">Testimonial</a> -->
+                <a href="#contact" class="nav-item nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5 pb-5" id="home">
+        <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item position-relative active" style="height: 100vh; min-height: 400px;">
+                    <img class="position-absolute w-100 h-100" src="{{ url_for('static', filename='img/carousel-2.png')}}" style="object-fit: cover;">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Kompas Insight</h4>
+                            <h3 class="display-2 font-secondary text-white mb-4">KOMSIGHT</h3>
+                            <form method="POST" action="{{url_for('predict')}}">
+                                <div>
+                                <label for="link" class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Input Link: </label>
+                                    </div>
+                                    {% with errors = get_flashed_messages(category_filter=["error"]) %}
+                                    {% if errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show"
+                                        role="alert">
+                                        <ul>
+                                            {%- for msg in errors %}
+                                            <li>{{ msg }}</li>
+                                            {% endfor -%}
+                                        </ul>
+                            
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    {% endif %}
+                                    {% endwith %}
+                                <input
+                                    type="text"
+                                    id="link"
+                                    name="link kompas"
+                                    required
+                                    size="10"
+                                    placeholder="Kompas Only"
+                                    style = "width: 100%;padding: 12px 20px;margin: 8px 0;box-sizing: border-box;"
+                                    />
+                                </div>
+                                <div>
+                                <input class="btn btn-primary font-weight-bold py-3 px-5 mt-2" type="submit" value='PREDICT'/>
+                                </div>
+                            </form>
+                        
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+
+    <!-- About Start -->
+    <div class="container-fluid py-5" id="about">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <img class="img-fluid mb-4 mb-lg-0" src="{{ url_for('static', filename='img/logo.png')}}" alt="">
+                </div>
+                <div class="col-lg-7">
+                    <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">About KomSight</h6>
+                    <h1 class="display-4 mb-3"><span class="text-primary">WebApp Favorit</span> untuk Meringkas Berita Terkini </h1>
+                    <p>KomSight (Kompas Insight) merupakan produk yang menawarkan user untuk dapat memperoleh intisari berita dengan cepat dan tepat tanpa dibombardir dengan visual clutter dari website Kompas. KomSight juga memberikan sentimen dari informasi yang disampaikan oleh artikel berita yang Anda masukkan ke dalam web kami. KomSight mempermudah Anda dalam memahami intisari berita Kompas dengan relatif waktu singkat.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <img class="img-fluid mb-4 mb-lg-0" src="{{ url_for('static', filename='img/about.png')}}" alt="">
+                </div>
+                <div class="col-lg-7">
+                    <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">About Kompas.com</h6>
+                    <h1 class="display-4 mb-3"><span class="text-primary">27 Tahun Pengalaman</span> dalam Industri Surat Kabar Indonesia</h1>
+                    <p>Kompas adalah surat kabar nasional Indonesia dari Jakarta yang terbit sejak 28 Juni 1965. Surat kabar ini diterbitkan oleh PT Kompas Media Nusantara yang merupakan bagian dari Kompas Gramedia. Bersamaan dengan adanya perkembangan teknologi yang sangat pesat, kompas melebarkan sayap dengan membangun kompas.com yang merupakan pioner pertama situs berita online di Indonesia. </p>
+                    <a class="btn btn-primary font-weight-bold py-3 px-5 mt-2" type="button" data-toggle="modal" data-target="#exampleModalLong">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Team Start -->
+    <div class="container-fluid py-5" id="team">
+        <div class="container py-5">
+            <div class="section-title position-relative text-center">
+                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Team 10</h6>
+                <h1 class="font-secondary display-4">Meet The Team</h1>
+            </div>
+            <div class="row justify-content-lg-start m-0 mb-4 pb-2 mb-sm-0 pb-sm-0">
+                <div class="col-lg-6 p-0">
+                    <div class="row m-0">
+                        <div class="col-sm-6 p-0 text-center">
+                            <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
+                                <h5 class="mb-2">Giovanny Alberta Tambahjong</h5>
+                                <p class="text-muted font-italic mb-2">162012133012</p>
+                                <p>5th semester students majoring in data science technology - UNAIR</p>
+                                <div class="position-relative mb-2">
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="https://github.com/vannyalt"><i class="fab fa-github"></i></a>
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="https://www.instagram.com/vannyalt/"><i class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="https://www.linkedin.com/in/giovannyalberta/"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 p-0" style="min-height: 300px;">
+                            <img class="position-absolute w-100 h-100" src="{{ url_for('static', filename='img/team-1.png')}}" style="object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-lg-end m-0 mb-4 pb-2 mb-sm-0 pb-sm-0">
+                <div class="col-lg-6 p-0">
+                    <div class="row m-0">
+                        <div class="col-sm-6 p-0" style="min-height: 300px;">
+                            <img class="position-absolute w-100 h-100" src="{{ url_for('static', filename='img/team-2.png')}}" style="object-fit: cover;">
+                        </div>
+                        <div class="col-sm-6 p-0 text-center">
+                            <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
+                                <h5 class="mb-2">Dheandra Azzahra Triyasnanda</h5>
+                                <p class="text-muted font-italic mb-2">162012133028</p>
+                                <p>5th semester students majoring in data science technology - UNAIR</p>
+                                <div class="position-relative mb-2">
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-github"></i></a>
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-lg-start m-0 mb-4 pb-2 mb-sm-0 pb-sm-0">
+                <div class="col-lg-6 p-0">
+                    <div class="row m-0">
+                        <div class="col-sm-6 p-0 text-center">
+                            <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
+                                <h5 class="mb-2">Hafiyyah Khayyiroh Shafro</h5>
+                                <p class="text-muted font-italic mb-2">162012133036</p>
+                                <p>5th semester students majoring in data science technology - UNAIR</p>
+                                <div class="position-relative mb-2">
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-github"></i></a>
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 p-0" style="min-height: 300px;">
+                            <img class="position-absolute w-100 h-100" src="{{ url_for('static', filename='img/team-3.png')}}" style="object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-lg-end m-0">
+                <div class="col-lg-6 p-0">
+                    <div class="row m-0">
+                        <div class="col-sm-6 p-0" style="min-height: 300px;">
+                            <img class="position-absolute w-100 h-100" src="{{ url_for('static', filename='img/team-4.png')}}" style="object-fit: cover;">
+                        </div>
+                        <div class="col-sm-6 p-0 text-center">
+                            <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
+                                <h5 class="mb-2">Muhammad Farras Reswara A</h5>
+                                <p class="text-muted font-italic mb-2">162012133055</p>
+                                <p>5th semester students majoring in data science technology - UNAIR</p>
+                                <div class="position-relative mb-2">
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-github"></i></a>
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-lg-start m-0 mb-4 pb-2 mb-sm-0 pb-sm-0">
+                <div class="col-lg-6 p-0">
+                    <div class="row m-0">
+                        <div class="col-sm-6 p-0 text-center">
+                            <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
+                                <h5 class="mb-2">Nalia Graciella Kerrysa</h5>
+                                <p class="text-muted font-italic mb-2">162012133073</p>
+                                <p>5th semester students majoring in data science technology - UNAIR</p>
+                                <div class="position-relative mb-2">
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-github"></i></a>
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-outline-primary btn-square mr-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 p-0" style="min-height: 300px;">
+                            <img class="position-absolute w-100 h-100" src="{{ url_for('static', filename='img/team-5.png')}}" style="object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-5" id="contact">
+        <div class="container py-5">
+            <div class="section-title position-relative text-center">
+                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Contact</h6>
+                <h1 class="font-secondary display-4">Get In Touch</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form">
+                        <div id="success"></div>
+                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                            <div class="form-row">
+                                <div class="col-sm-6 control-group">
+                                    <input type="text" class="form-control bg-secondary border-0 py-4 px-3" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="col-sm-6 control-group">
+                                    <input type="email" class="form-control bg-secondary border-0 py-4 px-3" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <input type="text" class="form-control bg-secondary border-0 py-4 px-3" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <textarea class="form-control bg-secondary border-0 py-2 px-3" rows="6" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit" id="sendMessageButton">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+        <div class="row pt-5">
+            <div class="col-12 mb-4 px-4">
+                <div class="row mb-5 p-4" style="background: rgba(256, 256, 256, .05);">
+                    <div class="col-md-4">
+                        <div class="text-md-center">
+                            <h5 class="text-primary text-uppercase mb-2" style="letter-spacing: 5px;">Our Office</h5>
+                            <p class="mb-4 m-md-0">FTMM UNAIR - Jl. Dr. Ir. H. Soekarno, Mulyorejo, Kec. Mulyorejo, Kota SBY, Jawa Timur</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-md-center">
+                            <h5 class="text-primary text-uppercase mb-2" style="letter-spacing: 5px;">Email Us</h5>
+                            <p class="mb-4 m-md-0">info@komsight.com</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-md-center">
+                            <h5 class="text-primary text-uppercase mb-2" style="letter-spacing: 5px;">Call Us</h5>
+                            <p class="m-0">+62882863926</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white text-center border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .05) !important;">
+        <p class="m-0 text-white">&copy; <a>2022 KomSight</a>. All Rights Reserved.</p>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Kompas.com</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img class="img-fluid mb-4" src="{{ url_for('static', filename='img/carousel-1.png')}}" alt="">
+                    <p>Kompas.com adalah salah satu pionir media online di Indonesia ketika pertama kali hadir di Internet pada 14 September 1995 dengan nama Kompas Online. </p>
+                    <p>Mulanya, Kompas Online atau KOL yang diakses dengan alamat kompas.co.id hanya menampilkan replika dari berita-berita harian Kompas yang terbit hari itu. </p>
+                    <p>Tujuannya adalah memberikan layanan kepada para pembaca harian Kompas di tempat-tempat yang sulit dijangkau oleh jaringan distribusi Kompas. Dengan hadirnya Kompas Online, para pembaca harian Kompas terutama di Indonesia bagian timur dan di luar negeri dapat menikmati harian Kompas hari itu juga, tidak perlu menunggu beberapa hari seperti biasanya.</p>
+                    <p>Selanjutnya, demi memberikan layanan yang maksimal, di awal tahun 1996 alamat Kompas Online berubah menjadi www.kompas.com. Dengan alamat baru, Kompas Online menjadi semakin populer buat para pembaca setia harian Kompas di luar negeri.</p>
+                    <p>Melihat potensi dunia digital yang besar, Kompas Online kemudian dikembangkan menjadi sebuah unit bisnis tersendiri di bawah bendera PT Kompas Cyber Media (KCM) pada 6 Agustus 1998. Sejak saat itu, Kompas Online lebih dikenal dengan sebutan KCM. Di era ini, para pengunjung KCM tidak lagi hanya mendapatkan replika harian Kompas, tapi juga mendapatkan update perkembangan berita-berita terbaru yang terjadi sepanjang hari.</p>
+                    <p>Pengunjung KCM meningkat pesat seiring dengan tumbuhnya pengguna Internet di Indonesia. Mengakses informasi dari Internet kini telah menjadi bagian tak terpisahkan dari hidup kita sehari-hari. Dunia digital pun terus berubah dari waktu ke waktu. KCM pun berbenah diri. </p>
+                    <p>Pada 29 Mei 2008, portal berita ini me-rebranding dirinya menjadi Kompas.com, merujuk kembali pada brand Kompas yang selama ini dikenal selalu menghadirkan jurnalisme yang memberi makna. Kanal-kanal berita ditambah. Produktivitas sajian berita ditingkatkan demi memberikan sajian informasi yang update dan aktual kepada para pembaca. Rebranding Kompas.com ingin menegaskan bahwa portal berita ini ingin hadir di tengah pembaca sebagai acuan bagi jurnalisme yang baik di tengah derasnya aliran informasi yang tak jelas kebenarannya.</p>
+                    <a href="https://inside.kompas.com/about-us">Visit Kompas.com!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+
+
+    <!-- Scroll to Bottom -->
+    <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-outline-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='lib/easing/easing.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/waypoints/waypoints.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/isotope/isotope.pkgd.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/lightbox/js/lightbox.min.js')}}"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{{ url_for('static', filename='mail/jqBootstrapValidation.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='mail/contact.js')}}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{ url_for('static', filename='js/main.js')}}"></script>
+</body>
+
+</html>
