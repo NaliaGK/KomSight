@@ -22,6 +22,12 @@ KomSight (Kompas Insight) merupakan produk yang menawarkan user untuk dapat memp
 Sumber data : Data diambil dari https://www.kompas.com/, dalam bentuk link artikel. Jumlah berita yang didapat sebanyak 1393 link.
 
 Metode NLP yang dipakai : 
-1. WordCloud = Tampilan frekuensi kata dalam berita
-2. Sentimen Analisis = Analisis terhadap positif/negatifnya sentimen teks berita
-3. Summarization = Rangkuman artikel berita
+1. Sentimen Analisis = Analisis terhadap positif/negatifnya sentimen teks berita
+2. Summarization = Rangkuman artikel berita
+
+Metode pendukung lainnya :
+1. Beautiful Soup
+2. Newspaper3k
+3. Regex
+4. TF-IDF Vectorizer
+5. StyleCloud (WordCloud)
